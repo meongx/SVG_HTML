@@ -15,9 +15,6 @@
 		minDomainY = (domainHeight - (domainHeight % 2)) / -2,
 		maxDomainY = (domainHeight + (domainHeight % 2)) /  2;
 
-	console.log('widthWin',widthWin)
-	console.log('heightWin',heightWin)
-
 	window.scaleX = d3.scale.linear()
 		.domain([minDomainX, maxDomainX])
 		.range([0, width]);

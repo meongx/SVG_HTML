@@ -58,7 +58,10 @@
 					y: ko.observable(0),
 					width: ko.observable(1),
 					height: ko.observable(1),
-					scale: ko.observable(2)
+					scale: ko.observable(2),
+					rx: ko.observable(0),
+					ry: ko.observable(0),
+					deg: ko.observable(45)
 				},
 				draw: function() {
 					vm.currentShape().clear();
@@ -74,6 +77,7 @@
 					}
 
 					var _shape = {
+						currentRectRotation: 0,
 						originalRectSize: size,
 
 						rect: c.append('rect')
@@ -98,6 +102,32 @@
 					rect.transition()
 						.attr('width', originalSize.width * scale)
 						.attr('height', originalSize.height * scale);
+				},
+				rotate: function() {
+					var context = vm.currentShape()
+						rect = context._shape.rect,
+						startDeg = context._shape.currentRectRotation,
+						i = context.inputs,
+						rx = scaleX(i.rx()),
+						ry = scaleY(i.ry()),
+						rxy = ' ' + rx + ' ' + ry
+						deg = i.deg();
+
+					rect
+						.transition()
+						.attrTween('transform', function() {
+							return d3.interpolateString(
+								'rotate(' + startDeg + rxy + ')',
+								'rotate(' + deg + rxy + ')'
+							)
+						});
+
+					//save current rotation
+					vm.currentShape()._shape.currentRectRotation = deg;
+				},
+				resetRotation: function() {
+					vm.currentShape().inputs.deg(0);
+					vm.currentShape().rotate();
 				},
 				clear: clearShapes
 			},

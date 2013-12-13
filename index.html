@@ -71,6 +71,21 @@
 					<button type="submit" data-bind="click: currentShape().scale">Skala</button>
 				</div>
 			</form>
+			<form class="input-category">
+				<div class="input-field">
+					<span>Titik Pusat (x,y)</span>
+					<input size="1" data-bind="value: currentShape().inputs.rx" />
+					<input size="1" data-bind="value: currentShape().inputs.ry" />
+				</div>
+				<div class="input-field">
+					<span>Rotasi</span>
+					<input size="1" data-bind="value: currentShape().inputs.deg" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().rotate">Rotasi</button>
+					<button type="reset" data-bind="click: currentShape().resetRotation">Reset</button>
+				</div>
+			</form>
 		</div>
 		<!-- /ko -->
 
