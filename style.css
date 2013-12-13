@@ -26,14 +26,17 @@ line.zero {
 .point-center {
 	fill: red;
 }
-circle.graphic {
+.graphic {
 	opacity: .7;
 	fill: #eee;
 	stroke: red;
 	stroke-width: 1;
 }
+rect.graphic {
+	stroke-width: 2;
+}
 
-#inputs {
+.inputs {
 	height: 80px;
 }
 .input-category {

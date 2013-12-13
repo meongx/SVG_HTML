@@ -1,4 +1,6 @@
 (function() {
+	var clearShapes = function() { window.graphicObject.selectAll('g').remove() };
+
 	window.vm = {
 		shapes: [
 			{
@@ -47,24 +49,76 @@
 					circle.transition()
 						.attr('r',scaleValue * radius)
 				},
-				clear: function() {
-					window.graphicObject.selectAll('g').remove();
-				}
+				clear: clearShapes
 			},
 			{
 				name: 'Persegi',
+				inputs: {
+					x: ko.observable(0),
+					y: ko.observable(0),
+					width: ko.observable(1),
+					height: ko.observable(1),
+					scale: ko.observable(2)
+				},
+				draw: function() {
+					vm.currentShape().clear();
+
+					var inputs = vm.currentShape().inputs,
+						x = scaleX(inputs.x()),
+						y = scaleY(inputs.y()),
+						c = window.graphicObject.append('g');
+
+					var size = {
+						width: scaleLength(inputs.width()),
+						height: scaleLength(inputs.height())
+					}
+
+					var _shape = {
+						originalRectSize: size,
+
+						rect: c.append('rect')
+							.attr('class', 'graphic')
+							.attr('x', x)
+							.attr('y', y)
+							.attr('width', 0)
+							.attr('height', 0)
+					}
+					vm.currentShape()._shape = _shape;
+
+					_shape.rect.transition()
+						.attr('width', size.width)
+						.attr('height', size.height);
+				},
+				scale: function() {
+					var context = vm.currentShape(),
+						rect = context._shape.rect,
+						originalSize = context._shape.originalRectSize,
+						scale = context.inputs.scale();
+
+					rect.transition()
+						.attr('width', originalSize.width * scale)
+						.attr('height', originalSize.height * scale);
+				},
+				clear: clearShapes
 			},
 			{
 				name: 'Garis',
+				inputs: {
+
+				},
+				draw: function() {
+
+				},
+				scale: function() {
+
+				},
+				clear: clearShapes
 			}
 		],
 		currentShape: ko.observable(undefined)
 	};
 
-	vm.currentShape.subscribe(function(oldValue) {
-		if (!oldValue) return;
-		oldValue.clear();
-	}, null, 'beforeChange')
+	vm.currentShape.subscribe(clearShapes);
 
 	ko.applyBindings(vm);
 })();

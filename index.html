@@ -8,16 +8,17 @@
 <body>
 	<div id="canvas"></div>
 	<div id="graphic-input">
-		<div style="margin-bottom: 20px">
+		<div style="margin-bottom: 10px">
 			<span>Objek Gambar</span>
 			<select data-bind="options: shapes, optionsText: 'name', value: currentShape"></select>
 			<button data-bind="click: currentShape().clear">Bersihkan Bidang Gambar</button>
 		</div>
 
-		<div id="inputs" data-bind="if: (currentShape().name == 'Lingkaran')">
+		<!-- ko if: (currentShape().name == 'Lingkaran') -->
+		<div class="inputs">
 			<form class="input-category">
 				<div class="input-field">
-					<span>Titik tengah(x,y)</span>
+					<span>Titik Tengah(x,y)</span>
 					<input size="1" data-bind="value: currentShape().inputs.x" />
 					<input size="1" data-bind="value: currentShape().inputs.y" />
 				</div>
@@ -39,14 +40,45 @@
 				</div>
 			</form>
 		</div>
+		<!-- /ko -->
 
-		<div data-bind="if: (currentShape().name == 'Persegi')">
-			<div>Persegi</div>
+		<!-- ko if: (currentShape().name == 'Persegi') -->
+		<div class="inputs">
+			<form class="input-category">
+				<div class="input-field">
+					<span>Titik Awal (x,y)</span>
+					<input size="1" data-bind="value: currentShape().inputs.x" />
+					<input size="1" data-bind="value: currentShape().inputs.y" />
+				</div>
+				<div class="input-field">
+					<span>Panjang</span>
+					<input size="1" data-bind="value: currentShape().inputs.width" />
+				</div>
+				<div class="input-field">
+					<span>Lebar</span>
+					<input size="1" data-bind="value: currentShape().inputs.height" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().draw">Gambar</button>
+				</div>
+			</form>
+			<form class="input-category">
+				<div class="input-field">
+					<span>Skala</span>
+					<input size="1" data-bind="value: currentShape().inputs.scale" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().scale">Skala</button>
+				</div>
+			</form>
 		</div>
+		<!-- /ko -->
 
-		<div data-bind="if: (currentShape().name == 'Garis')">
+		<!-- ko if: (currentShape().name == 'Garis') -->
+		<div class="inputs">
 			<div>Garis</div>
 		</div>
+		<!-- /ko -->
 	</div>
 
 	<script src="lib/jquery-1.10.2.min.js"></script>
