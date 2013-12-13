@@ -1,0 +1,19 @@
+svg {
+	font: 10px sans-serif;
+	shape-rendering: crispEdges;
+}
+rect.canvas {
+	fill: #eee;
+	opacity: .3;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #999;
+}
+
+line.zero {
+	stroke-width: 2;
+	stroke: blue;
+}
