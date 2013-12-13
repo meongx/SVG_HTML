@@ -1,17 +1,17 @@
 (function() {
-	var margin = { top: 5, right: 5, bottom: 30, left: 20 },
+	var margin = { top: 5, right: 10, bottom: 30, left: 20 },
 	    widthWin = window.innerWidth - 20 - margin.left - margin.right,
 	    heightWin = window.innerHeight - 150 - margin.top - margin.bottom,
 	    
-		scaleGrid = 30,
-		width = widthWin - (widthWin % scaleGrid),
-		height = heightWin - (heightWin % scaleGrid),
+		cellSize = 30,
+		width = widthWin - (widthWin % cellSize),
+		height = heightWin - (heightWin % cellSize),
 
-		domainWidth = width / scaleGrid,
+		domainWidth = width / cellSize,
 		minDomainX = (domainWidth - (domainWidth % 2)) / -2,
 		maxDomainX = (domainWidth + (domainWidth % 2)) /  2,
 
-		domainHeight = height / scaleGrid,
+		domainHeight = height / cellSize,
 		minDomainY = (domainHeight - (domainHeight % 2)) / -2,
 		maxDomainY = (domainHeight + (domainHeight % 2)) /  2;
 
@@ -26,7 +26,7 @@
 		.domain([minDomainY, maxDomainY])
 		.range([height, 0]);
 
-	window.scaleLength = function(input) { return input * scaleGrid }
+	window.scaleLength = function(input) { return input * cellSize }
 
 	var axisX = d3.svg.axis()
 		.scale(scaleX)

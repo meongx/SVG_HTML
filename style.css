@@ -1,3 +1,8 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
 svg {
 	font: 10px sans-serif;
 	shape-rendering: crispEdges;
@@ -18,11 +23,6 @@ line.zero {
 	stroke: blue;
 }
 
-.input-field span {
-	display: inline-block;
-	width: 100px;
-}
-
 .point-center {
 	fill: red;
 }
@@ -31,4 +31,22 @@ circle.graphic {
 	fill: #eee;
 	stroke: red;
 	stroke-width: 1;
+}
+
+#inputs {
+	height: 80px;
+}
+.input-category {
+	float: left;
+	margin-right: 10px;
+	padding-left: 10px;
+	height: 100%;
+	border-left: 1px solid black;
+}
+.input-category:first-child {
+	border: none;
+}
+.input-field span {
+	display: inline-block;
+	width: 105px;
 }

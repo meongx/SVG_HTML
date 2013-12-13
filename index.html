@@ -9,24 +9,35 @@
 	<div id="canvas"></div>
 	<div id="graphic-input">
 		<div style="margin-bottom: 20px">
-			<span>Objek Graphic</span>
+			<span>Objek Gambar</span>
 			<select data-bind="options: shapes, optionsText: 'name', value: currentShape"></select>
-			<button data-bind="click: currentShape().clear">Clear</button>
+			<button data-bind="click: currentShape().clear">Bersihkan Bidang Gambar</button>
 		</div>
 
-		<div data-bind="if: (currentShape().name == 'Lingkaran')">
-			<div class="input-field">
-				<span>Titik tengah(x,y)</span>
-				<input size="1" data-bind="value: currentShape().inputs.x">
-				<input size="1" data-bind="value: currentShape().inputs.y">
-			</div>
-			<div class="input-field">
-				<span>Radius</span>
-				<input size="1" data-bind="value: currentShape().inputs.r">
-			</div>
-			<div>
-				<button data-bind="click: currentShape().draw">Draw</button>
-			</div>
+		<div id="inputs" data-bind="if: (currentShape().name == 'Lingkaran')">
+			<form class="input-category">
+				<div class="input-field">
+					<span>Titik tengah(x,y)</span>
+					<input size="1" data-bind="value: currentShape().inputs.x" />
+					<input size="1" data-bind="value: currentShape().inputs.y" />
+				</div>
+				<div class="input-field">
+					<span>Radius</span>
+					<input size="1" data-bind="value: currentShape().inputs.r" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().draw">Gambar</button>
+				</div>
+			</form>
+			<form class="input-category">
+				<div class="input-field">
+					<span>Skala</span>
+					<input size="1" data-bind="value: currentShape().inputs.scale" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().scale">Skala</button>
+				</div>
+			</form>
 		</div>
 
 		<div data-bind="if: (currentShape().name == 'Persegi')">
