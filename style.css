@@ -17,3 +17,18 @@ line.zero {
 	stroke-width: 2;
 	stroke: blue;
 }
+
+.input-field span {
+	display: inline-block;
+	width: 100px;
+}
+
+.point-center {
+	fill: red;
+}
+circle.graphic {
+	opacity: .7;
+	fill: #eee;
+	stroke: red;
+	stroke-width: 1;
+}
