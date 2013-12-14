@@ -1,7 +1,7 @@
 (function() {
 	var margin = { top: 5, right: 10, bottom: 30, left: 20 },
 	    widthWin = window.innerWidth - 20 - margin.left - margin.right,
-	    heightWin = window.innerHeight - 150 - margin.top - margin.bottom,
+	    heightWin = window.innerHeight - 160 - margin.top - margin.bottom,
 	    
 		cellSize = 30,
 		width = widthWin - (widthWin % cellSize),

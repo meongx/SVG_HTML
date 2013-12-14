@@ -108,9 +108,11 @@
 						rect = context._shape.rect,
 						startDeg = context._shape.currentRectRotation,
 						i = context.inputs,
-						rx = scaleX(i.rx()),
-						ry = scaleY(i.ry()),
-						rxy = ' ' + rx + ' ' + ry
+						//rx = scaleX(i.rx()),
+						//ry = scaleY(i.ry()),
+						rx = parseInt(rect.attr('x')) + (rect.attr('width') / 2),
+						ry = parseInt(rect.attr('y')) + (rect.attr('height') / 2),
+						rxy = ' ' + rx + ' ' + ry,
 						deg = i.deg();
 
 					rect
@@ -126,8 +128,10 @@
 					vm.currentShape()._shape.currentRectRotation = deg;
 				},
 				resetRotation: function() {
+					var temp = vm.currentShape().inputs.deg();
 					vm.currentShape().inputs.deg(0);
-					vm.currentShape().rotate();
+					vm.currentShape().rotate(0);
+					vm.currentShape().inputs.deg(temp);
 				},
 				clear: clearShapes
 			},
