@@ -23,7 +23,7 @@ line.zero {
 	stroke: blue;
 }
 
-.point-center {
+.point {
 	fill: red;
 }
 .graphic {
@@ -32,8 +32,8 @@ line.zero {
 	stroke: red;
 	stroke-width: 1;
 }
-rect.graphic {
-	stroke-width: 2;
+rect.graphic, line.graphic {
+	stroke-width: 2.5;
 }
 
 .inputs {
@@ -51,5 +51,8 @@ rect.graphic {
 }
 .input-field span {
 	display: inline-block;
-	width: 105px;
+	width: 110px;
+}
+.input-field span.inline {
+	display: inline;
 }

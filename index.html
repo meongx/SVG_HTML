@@ -30,13 +30,25 @@
 					<button type="submit" data-bind="click: currentShape().draw">Gambar</button>
 				</div>
 			</form>
-			<form class="input-category">
+			<form class="input-category" data-bind="visible: currentShape().shape()">
 				<div class="input-field">
-					<span>Skala</span>
+					<span class="inline">Skala</span>
 					<input size="1" data-bind="value: currentShape().inputs.scale" />
 				</div>
 				<div>
 					<button type="submit" data-bind="click: currentShape().scale">Skala</button>
+					<button type="reset" data-bind="click: currentShape().resetScale">Reset</button>
+				</div>
+			</form>
+			<form class="input-category" data-bind="visible: currentShape().shape()">
+				<div class="input-field">
+					<span>Translasi (x,y)</span>
+					<input size="1" data-bind="value: currentShape().inputs.tx" />
+					<input size="1" data-bind="value: currentShape().inputs.ty" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().translate">Translasi</button>
+					<button type="reset" data-bind="click: currentShape().resetTranslation">Reset</button>
 				</div>
 			</form>
 		</div>
@@ -62,23 +74,35 @@
 					<button type="submit" data-bind="click: currentShape().draw">Gambar</button>
 				</div>
 			</form>
-			<form class="input-category">
+			<form class="input-category" data-bind="visible: currentShape().shape()">
 				<div class="input-field">
-					<span>Skala</span>
+					<span class="inline">Skala</span>
 					<input size="1" data-bind="value: currentShape().inputs.scale" />
 				</div>
 				<div>
 					<button type="submit" data-bind="click: currentShape().scale">Skala</button>
+					<button type="reset" data-bind="click: currentShape().resetScale">Reset</button>
 				</div>
 			</form>
-			<form class="input-category">
+			<form class="input-category" data-bind="visible: currentShape().shape()">
+				<div class="input-field">
+					<span>Translasi (x,y)</span>
+					<input size="1" data-bind="value: currentShape().inputs.tx" />
+					<input size="1" data-bind="value: currentShape().inputs.ty" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().translate">Translasi</button>
+					<button type="reset" data-bind="click: currentShape().resetTranslation">Reset</button>
+				</div>
+			</form>
+			<form class="input-category" data-bind="visible: currentShape().shape()">
 				<!--<div class="input-field">
 					<span>Titik Pusat (x,y)</span>
 					<input size="1" data-bind="value: currentShape().inputs.rx" />
 					<input size="1" data-bind="value: currentShape().inputs.ry" />
 				</div>-->
 				<div class="input-field">
-					<span>Rotasi</span>
+					<span class="inline">Rotasi</span>
 					<input size="1" data-bind="value: currentShape().inputs.deg" />
 				</div>
 				<div>
@@ -91,7 +115,42 @@
 
 		<!-- ko if: (currentShape().name == 'Garis') -->
 		<div class="inputs">
-			<div>Garis</div>
+			<form class="input-category">
+				<div class="input-field">
+					<span>Titik Awal (x1,y1)</span>
+					<input size="1" data-bind="value: currentShape().inputs.x1" />
+					<input size="1" data-bind="value: currentShape().inputs.y1" />
+				</div>
+				<div class="input-field">
+					<span>Titik Akhir (x2,y2)</span>
+					<input size="1" data-bind="value: currentShape().inputs.x2" />
+					<input size="1" data-bind="value: currentShape().inputs.y2" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().draw">Gambar</button>
+				</div>
+			</form>
+			<form class="input-category" data-bind="visible: currentShape().shape()">
+				<div class="input-field">
+					<span>Translasi (x,y)</span>
+					<input size="1" data-bind="value: currentShape().inputs.tx" />
+					<input size="1" data-bind="value: currentShape().inputs.ty" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().translate">Translasi</button>
+					<button type="reset" data-bind="click: currentShape().resetTranslation">Reset</button>
+				</div>
+			</form>
+			<form class="input-category" data-bind="visible: currentShape().shape()">
+				<div class="input-field">
+					<span class="inline">Rotasi</span>
+					<input size="1" data-bind="value: currentShape().inputs.deg" />
+				</div>
+				<div>
+					<button type="submit" data-bind="click: currentShape().rotate">Rotasi</button>
+					<button type="reset" data-bind="click: currentShape().resetRotation">Reset</button>
+				</div>
+			</form>
 		</div>
 		<!-- /ko -->
 	</div>
