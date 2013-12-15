@@ -98,23 +98,43 @@ Persegi = {
 	},
 	translate: function() {
 		var context = vm.currentShape(),
-			rect = context.shape().rect,
-			tx = scaleX(context.inputs.tx()),
-			ty = scaleY(context.inputs.ty());
+			i = context.inputs,
+			tx = scaleX(i.tx()),
+			ty = scaleY(i.ty());
 
-		rect.transition()
-			.attr('x', tx)
-			.attr('y', ty);
+		context.fn.translate(tx,ty);
 	},
 	resetTranslation: function() {
-		var context = vm.currentShape().shape(),
-			rect = context.rect,
-			tx = context.originalRectCoord.x,
-			ty = context.originalRectCoord.y;
+		var context = vm.currentShape(),
+			shape = context.shape(),
+			tx = shape.originalRectCoord.x,
+			ty = shape.originalRectCoord.y;
 
-		rect.transition()
-			.attr('x', tx)
-			.attr('y', ty);
+		context.fn.translate(tx,ty);
 	},
-	clear: clearShapes
+	clear: clearShapes,
+
+	fn: {
+		translate: function(x,y) {
+			var rect = vm.currentShape().shape().rect;
+
+			var transition = rect.transition()
+							.attr('x', x)
+							.attr('y', y);
+
+			var transform = rect.attr('transform');
+			if (transform) {
+				var deg = transform.substring(7, transform.indexOf(' ')),
+					tx = x + (rect.attr('width')  / 2),
+					ty = y + (rect.attr('height') / 2);
+
+				transition.attrTween('transform', function() {
+					return d3.interpolateString(
+						transform,
+						'rotate(' + deg + ' ' + tx + ' ' + ty + ')'
+					);
+				})
+			}
+		}
+	}
 }
