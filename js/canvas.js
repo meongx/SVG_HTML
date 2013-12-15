@@ -64,4 +64,8 @@
 	$zeroLines.each(function() { this.classList.add('zero') });
 
 	window.graphicObject = svg.append('g');
+	window.clearShapes = function() { 
+		window.graphicObject.selectAll('g').remove();
+		vm.currentShape().shape(undefined);
+	};
 })();
