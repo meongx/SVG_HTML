@@ -317,10 +317,13 @@
 				rotate: function() {
 					var context = vm.currentShape(),
 						shape = context.shape(),
-						origin = shape.lineOriginalCoord,
+						x1 = parseInt(shape.line.attr('x1')),
+						y1 = parseInt(shape.line.attr('y1')),
+						x2 = parseInt(shape.line.attr('x2')),
+						y2 = parseInt(shape.line.attr('y2')),
 						startDeg = shape.currentRotation,
-						rx = origin.x1 + ((origin.x2 - origin.x1) / 2),
-						ry = origin.y1 - ((origin.y1 - origin.y2) / 2),
+						rx = x1 + ((x2 - x1) / 2),
+						ry = y1 - ((y1 - y2) / 2),
 						rxy = ' ' + rx + ' ' + ry,
 						deg = context.inputs.deg();
 
