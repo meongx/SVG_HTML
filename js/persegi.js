@@ -102,6 +102,7 @@ Persegi = {
 			tx = scaleX(i.tx()),
 			ty = scaleY(i.ty());
 
+		//TODO: scale should be calculated inside fn.translate()
 		context.fn.translate(tx,ty);
 	},
 	resetTranslation: function() {
@@ -110,6 +111,7 @@ Persegi = {
 			tx = shape.originalRectCoord.x,
 			ty = shape.originalRectCoord.y;
 
+		//TODO: should be fn.translate(0,0)
 		context.fn.translate(tx,ty);
 	},
 	clear: clearShapes,
